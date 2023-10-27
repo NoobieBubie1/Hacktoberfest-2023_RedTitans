@@ -61,11 +61,18 @@ def worm(x,y,n,r,g,b):
 def blit(x, y, image):
     for ix in range(0, image.width):
         for iy in range(0, image.height):
-            r, g, b, _ = image.getpixel((ix,iy))
+            r, g, b = image.getpixel((ix,iy))
             pixel(ix,iy,r,g,b)
 
-img = Image.open('rgb.png')
-smallimg = img.resize((638,358))
-blit(641,721,smallimg)
+glasses = Image.open('thug.png')
+glasses = glasses.resize((300,75))
+
+for y in range(0, 50):
+    img = Image.open('cat.jpg')
+    smallimg = img.resize((638,358))
+    smallimg.paste(glasses, (300,y), glasses)
+    blit(1000, 0, smallimg)
+
+
 
 s.close()
